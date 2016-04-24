@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Voz</title>
+    <link href="bower_components/polymer/polymer.html" rel="import">
+    <link href="elements/speech-input.html" rel="import">
+  </head>
+  <body>
+    <template id="app" is="auto-binding">
+      <section>
+        <speech-input continuous="true" interimResults="true" language="es-BO" value="{{ text1 }}"></speech-input>
+        <p>{{ text1 }}</p>
+      </section>
+      <section>
+        <speech-input continuous="true" interimResults="true" language="es-BO" value="{{ text2 }}"></speech-input>
+        <p>{{ text2 }}</p>
+      </section>
+    </template>
+
+    <speech-input continuous="true" interimResults="true" language="es-BO" value="{{ text2 }}"></speech-input>
+  </body>
+</html>

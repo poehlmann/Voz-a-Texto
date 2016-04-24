@@ -1,0 +1,43 @@
+<link href="../bower_components/polymer/polymer.html" rel="import">
+<link href="./speech-recognition.html" rel="import">
+
+<polymer-element name="speech-input">
+  <template>
+    
+    <speech-recognition
+      id="recognition"
+      isRecognizing="{{ isRecognizing }}"
+      phraseValue="{{ value }}"
+      continuous="{{ continuous }}"
+      interimResults="{{ interimResults }}"
+      language="{{ language }}"></speech-recognition>
+    
+    <section class="controls">
+      <button hidden?="{{ isRecognizing }}"  on-click="{{ startAction }}">Start</button>
+      <button hidden?="{{ !isRecognizing }}" on-click="{{ stopAction }}">Stop</button>
+    </section>
+    
+    <textarea>{{ value }}</textarea>
+    
+  </template>
+  
+  <script>
+    Polymer('speech-input', {
+      publish: {
+        value: '',
+        isRecognizing: false,
+        continuous: false,
+        interimResults: false,
+        language: navigator.language // TODO: standard detection
+      },
+      
+      startAction: function () {
+        this.$.recognition.start();
+      },
+      
+      stopAction: function () {
+        this.$.recognition.stop();
+      }
+    });
+  </script>
+</polymer-element>
